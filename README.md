@@ -1,2 +1,2 @@
 # Tech-Minds-dev
-Company website 
+Tech Minds dev is a software Development Company That empower businesses through innovative technology solutions for tech support 
