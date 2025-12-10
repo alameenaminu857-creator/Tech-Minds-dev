@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech Minds Dev | Login & Sign Up</title>
+  <style>
+    /* ===== Reset and Base ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0d1117, #161b22);
+      color: #fff;
+    }
+
+    /* ===== Container ===== */
+    .auth-container {
+      width: 380px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      padding: 2.5rem;
+      transition: 0.4s ease-in-out;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.8rem;
+      color: #00aaff;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      color: #aaa;
+    }
+
+    input {
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background: #21262d;
+      color: #fff;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border: 1px solid #00aaff;
+    }
+
+    button {
+      background: #00aaff;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0090dd;
+    }
+
+    .toggle-text {
+      text-align: center;
+      margin-top: 1.2rem;
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+
+    .toggle-text span {
+      color: #00aaff;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 420px) {
+      .auth-container {
+        width: 90%;
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <!-- Login Form -->
+    <form id="loginForm">
+      <h1>login</h1>
+      <label>Email</label>
+      <input type="email" id="loginEmail" placeholder="you@techminds.dev" required />
+
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="********" required />
+
+      <button type="submit">Login</button>
+
+      <p class="toggle-text">
+        Don’t have an account? <span id="showSignUp">Sign Up</span>
+      </p>
+    </form>
+
+    <!-- Sign Up Form -->
+    <form id="signUpForm" class="hidden">
+      <h1>sign up</h1>
+      <label>Full Name</label>
+      <input type="text" id="signUpName" placeholder="John Doe" required />
+
+      <label>Email</label>
+      <input type="email" id="signUpEmail" placeholder="you@techminds.dev" required />
+
+      <label>Password</label>
+      <input type="password" id="signUpPassword" placeholder="********" required />
+
+      <button type="submit">Create Account</button>
+
+      <p class="toggle-text">
+        Already a member? <span id="showLogin">Login</span>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const signUpForm = document.getElementById("signUpForm");
+    const showSignUp = document.getElementById("showSignUp");
+    const showLogin = document.getElementById("showLogin");
+
+    // Toggle between forms
+    showSignUp.addEventListener("click", () => {
+      loginForm.classList.add("hidden");
+      signUpForm.classList.remove("hidden");
+    });
+
+    showLogin.addEventListener("click", () => {
+      signUpForm.classList.add("hidden");
+      loginForm.classList.remove("hidden");
+    });
+
+    // Handle Login
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      if (email && password) {
+        alert(`Welcome back, ${email}!`);
+        loginForm.reset();
+      } else {
+        alert("Please fill in all fields.");
+      }
+    });
+
+    // Handle Sign Up
+    signUpForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("signUpName").value;
+      const email = document.getElementById("signUpEmail").value;
+      const password = document.getElementById("signUpPassword").value;
+
+      if (name && email && password) {
+        alert(`Welcome to Tech Minds Dev, ${name}!`);
+        signUpForm.reset();
+      } else {
+        alert("Please fill in all fields.");
+      }
+    });
+  </script>
+</body>
+</html>
